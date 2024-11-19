@@ -4,6 +4,7 @@ import { editDescription, editFirstName, editLastName, editLink, editProfileImag
 import { FaUser, FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaCamera } from "react-icons/fa";
 import { MdDescription, MdLink } from "react-icons/md";
 import InputField from "./inputField";
+import { useNavigate } from "react-router-dom";
 
 const EditForm = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const EditForm = () => {
 
   const [imagePreview, setImagePreview] = useState(profile.profilePicture);
 
-  
+  const navigate=useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +50,6 @@ const EditForm = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     dispatch(editFirstName(formData.firstName));
     dispatch(editLastName(formData.lastName));
     dispatch(editDescription(formData.description));
@@ -58,6 +58,8 @@ const EditForm = () => {
     dispatch(editLink({ platform: 'linkedin', url: formData.linkedin }));
     dispatch(editLink({ platform: 'instagram', url: formData.instagram }));
     dispatch(editLink({ platform: 'twitter', url: formData.twitter }));
+    navigate('/home')
+
   };
 
   const SectionHeader = ({ icon: Icon, title }) => (
