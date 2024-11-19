@@ -6,6 +6,7 @@ import About from './pages/About';
 import ServicePage from './pages/Service';
 import PortfolioPage from './pages/Portfolio';
 import ContactPage from './pages/Contact';
+import EditPage from './pages/EditProfile';
 
 function App() {
   const router = createBrowserRouter([
@@ -33,9 +34,13 @@ function App() {
       path: "/contact",
       element: <ContactPage />,
     },
+    {
+      path: "/edit",
+      element: <EditPage />,
+    },
   ]);
   return (
-    <div >
+    <div className='bg-white' >
     <RouterProvider router={router} />
 
     </div>

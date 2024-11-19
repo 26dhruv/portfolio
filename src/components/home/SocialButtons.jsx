@@ -1,12 +1,12 @@
 import { FaLinkedin, FaInstagram, FaGithubSquare, FaTwitter } from "react-icons/fa";
 import { RoundButton } from "./RoundButton";
 
-const SocialButtons = () => {
+const SocialButtons = (links) => {
   const socialLinks = [
-    { icon: FaLinkedin, link: "https://linkedin.com", alt: "LinkedIn" },
-    { icon: FaInstagram, link: "https://instagram.com", alt: "Instagram" },
-    { icon: FaGithubSquare, link: "https://github.com", alt: "GitHub" },
-    { icon: FaTwitter, link: "https://twitter.com", alt: "Twitter" },
+    { icon: FaLinkedin, link:links.LinkedIn, alt: "LinkedIn" },
+    { icon: FaInstagram, link:links.Instagram, alt: "Instagram" },
+    { icon: FaGithubSquare, link: links.GitHub, alt: "GitHub" },
+    { icon: FaTwitter, link: links.Twitter, alt: "Twitter" },
   ];
 
   return (

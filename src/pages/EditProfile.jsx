@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import SideBar from "../components/common/SideBar";
-import { PortfolioGrid } from "../components/porfolio/PortfolioGrid";
+import EditForm from "../components/edit/EditForm";
 
-function PortfolioPage() {
+function EditPage() {
   useEffect(()=>{
     document.title="Portfolio";
   },[])
@@ -12,13 +12,11 @@ function PortfolioPage() {
     <SideBar />
 
     <div className="flex-1 p-6 ml-72">
-    <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          My Portfolio
-        </h1>
-        <PortfolioGrid />
+    
+        <EditForm />
     </div>
   </div>
   );
 }
 
-export default PortfolioPage;
+export default EditPage;

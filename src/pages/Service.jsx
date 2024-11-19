@@ -1,8 +1,12 @@
 // src/pages/ServicePage.js
+import { useEffect } from "react";
 import SideBar from "../components/common/SideBar";
 import ServiceList from "../components/service/ServiceList";
 
 const ServicePage = () => {
+  useEffect(()=>{
+    document.title="Service";
+  },[])
   return (
     
     <div className="flex h-screen">

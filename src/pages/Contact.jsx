@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import SideBar from '../components/common/SideBar';
 import ContactForm from '../components/contact/ContactForm';
 
 const ContactPage = () => {
+  useEffect(()=>{
+    document.title="Contact";
+  },[])
   return (
     <div className="flex h-screen">
       <SideBar />
