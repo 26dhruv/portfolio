@@ -5,17 +5,17 @@ import rjs from '/Users/dhruvthakkar/Desktop/Devlopment/techify_internship/portf
 const services = [
   {
     title: "Backtesting of Algorithms",
-    description: "We offer comprehensive backtesting services to validate your trading algorithms.",
+    description: "I offer comprehensive backtesting services to validate your trading algorithms.",
     icon: backtesticon // Replace with actual icon or image
   },
   {
     title: "Data Science Solutions",
-    description: "We provide data-driven insights and predictive models for business growth.",
+    description: "I provide data-driven insights and predictive models for business growth.",
     icon: datascience // Replace with actual icon or image
   },
   {
-    title: "Web Development in React.js",
-    description: "We specialize in building dynamic and responsive web applications using React.js.",
+    title: "Development in React.js",
+    description: "I specialize in building dynamic and responsive web applications using React.js.",
     icon: rjs // Replace with actual icon or image
   }
 ];

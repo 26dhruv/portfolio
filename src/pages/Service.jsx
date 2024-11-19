@@ -14,9 +14,9 @@ const ServicePage = () => {
 
     <div className="flex-1 p-6 ml-72">
       <div className="flex flex-col items-center gap-4">
-      <h1 className="text-4xl font-bold text-center mb-6">Our Services</h1>
+      <h1 className="text-4xl font-bold text-center mb-6">My Services</h1>
         <p className="text-xl text-gray-600 text-center mb-10">
-          We offer a range of services designed to help businesses and developers achieve their goals.
+          I offer a range of services designed to help businesses and developers achieve their goals.
         </p>
         <ServiceList />
       </div>

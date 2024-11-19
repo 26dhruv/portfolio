@@ -12,10 +12,10 @@ const ContactPage = () => {
 
       <div className="flex-1 p-6 ml-72">
         <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          Contact Us
+          Contact Me
         </h1>
         <p className="text-xl text-gray-600 text-center mb-6">
-          Have any questions or want to get in touch? We’d love to hear from you!
+          Have any questions or want to get in touch? I’d love to hear from you!
         </p>
 
         <ContactForm />
