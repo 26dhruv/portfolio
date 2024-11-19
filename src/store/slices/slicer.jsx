@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
   firstName: 'Dhruv',
@@ -10,9 +11,21 @@ const initialState = {
     linkedin: 'https://www.linkedin.com/in/dhruv-thakkar-97a666239',
     instagram: 'https://www.instagram.com/dhruv_thakkar26',
     twitter: 'https://twitter.com/your-username',
-  }
+  },
+  isAuthenticated:false,
+  token:null,
+  error:null,
 };
-
+export const loginUser=createAsyncThunk('userProfile/loginUser',async({username,password},{rejectWithValue})=>{
+  try{
+    const response = await axios.post("http://localhost:3000/login",{username,password})
+    return response.data
+  }
+  catch(error)
+  {
+    return rejectWithValue(error.response.data);
+  }
+})
 const userProfileSlice = createSlice({
   name: "userProfile",
   initialState,
@@ -34,15 +47,34 @@ const userProfileSlice = createSlice({
       if (platform in state.links) {
         state.links[platform] = url;
       }
+    },
+    logout:(state)=>
+    {
+      state.isAuthenticated=false;
+      state.token=null
     }
-  }
+  },
+  extraReducers:(builder)=>{
+    builder.addCase(loginUser.fulfilled,(state,action)=>{
+      state.isAuthenticated=true;
+      state.token=action.payload.token;
+      state.error=null;
+      alert('login successful')
+      
+    })
+    .addCase(loginUser.rejected,(state,action)=>{
+      state.isAuthenticated=false;
+      state.token=null;
+      state.error=action.payload.message || 'Login Failed'
+    });
+  },
 });
 export const {
   editFirstName,
   editLastName,
   editDescription,
   editProfileImage,
-  editLink
+  editLink,logout
 } = userProfileSlice.actions;
 
 export default userProfileSlice.reducer;

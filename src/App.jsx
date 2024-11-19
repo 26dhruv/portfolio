@@ -7,6 +7,7 @@ import ServicePage from './pages/Service';
 import PortfolioPage from './pages/Portfolio';
 import ContactPage from './pages/Contact';
 import EditPage from './pages/EditProfile';
+import LogInPage from './pages/LogIn';
 
 function App() {
   const router = createBrowserRouter([
@@ -37,6 +38,10 @@ function App() {
     {
       path: "/edit",
       element: <EditPage />,
+    },
+    {
+      path: "/log-in",
+      element: <LogInPage />,
     },
   ]);
   return (
