@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import SideBar from "../components/common/SideBar";
 import EditForm from "../components/edit/EditForm";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function EditPage() {
-  
+  const navigate=useNavigate()
+  const userProfile=useSelector((state)=>state.userProfile)
   useEffect(()=>{
-    
+    if(!userProfile.isAuthenticated)
+      {
+        navigate('/log-in')
+      }
     document.title="Portfolio";
   },[])
   return (

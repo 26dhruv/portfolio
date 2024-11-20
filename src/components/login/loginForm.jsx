@@ -81,7 +81,7 @@ export default function SignInForm() {
                 </button>
               </div>
               <div className="text-center text-sm text-black">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link to="/sign-up" className="font-semibold hover:text-orange-200 transition-colors">
                   Sign up
                 </Link>
