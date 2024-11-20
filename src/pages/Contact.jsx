@@ -1,17 +1,11 @@
 import { useEffect } from 'react';
 import SideBar from '../components/common/SideBar';
 import ContactForm from '../components/contact/ContactForm';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const ContactPage = () => {
-  const navigate=useNavigate()
-  const userProfile=useSelector((state)=>state.userProfile)
+  
   useEffect(()=>{
-    if(!userProfile.isAuthenticated)
-    {
-        navigate('/log-in')
-      }
+   
     document.title="Contact";
   },[])
   return (

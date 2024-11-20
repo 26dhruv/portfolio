@@ -3,17 +3,11 @@ import AboutHeader from "../components/about/AboutHeader";
 import AboutContent from "../components/about/AboutContent";
 import DecorativeCircles from "../components/about/DecorativeCircles";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const AboutPage = () => {
-  const navigate=useNavigate()
-  const userProfile=useSelector((state)=>state.userProfile)
+  
   useEffect(()=>{
-    if(!userProfile.isAuthenticated)
-      {
-        navigate('/log-in')
-      }
+    
     document.title="About";
   },[])
   return (
