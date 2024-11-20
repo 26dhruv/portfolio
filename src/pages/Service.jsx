@@ -2,9 +2,17 @@
 import { useEffect } from "react";
 import SideBar from "../components/common/SideBar";
 import ServiceList from "../components/service/ServiceList";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ServicePage = () => {
+  const navigate=useNavigate()
+  const userProfile=useSelector((state)=>state.userProfile)
   useEffect(()=>{
+    if(!userProfile.isAuthenticated)
+      {
+        navigate('/log-in')
+      }
     document.title="Service";
   },[])
   return (

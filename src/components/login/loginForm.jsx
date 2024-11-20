@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../store/slices/slicer";
+import InputField from "../common/inputField";
 
 export default function SignInForm() {
-  const [inputUserName, setInputUserName] = useState('');
-  const [inputPassword, setInputPassword] = useState('');
+  const [InputFieldUserName, setInputFieldUserName] = useState('');
+  const [InputFieldPassword, setInputFieldPassword] = useState('');
   const dispatch = useDispatch();
   const { isAuthenticated, error } = useSelector((state) => state.userProfile);
   const navigate = useNavigate();
@@ -27,7 +28,6 @@ export default function SignInForm() {
 
   return (
     <div className="flex flex-row bg-white h-screen items-center px-6">
-      <div id="Contact" className="flex-1 justify-start bg-white">
         <div className="px-6 py-12 mx-auto max-w-lg">
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 shadow-lg">
             <div className="text-left">
@@ -39,30 +39,30 @@ export default function SignInForm() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <div className="mt-2.5">
-                  <input
+                  <InputField
                     type="text"
                     name="username"
                     id="username"
                     autoComplete="username"
                     placeholder="Enter your userName"
-                    value={inputUserName}
-                    onChange={(e) => setInputUserName(e.target.value)}
+                    value={InputFieldUserName}
+                    onChange={(e) => setInputFieldUserName(e.target.value)}
                     required
-                    className="block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 sm:text-sm sm:leading-6 transition-all duration-200"
+                    className="block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6 transition-all duration-200"
                   />
                 </div>
               </div>
               <div className="sm:col-span-2">
                 <div className="mt-2.5">
-                  <input
+                  <InputField
                     type="password"
                     name="password"
                     id="password"
                     placeholder="Enter your password"
-                    value={inputPassword}
-                    onChange={(e) => setInputPassword(e.target.value)}
+                    value={InputFieldPassword}
+                    onChange={(e) => setInputFieldPassword(e.target.value)}
                     required
-                    className="block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 sm:text-sm sm:leading-6 transition-all duration-200"
+                    className="block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 transition-all duration-200"
                   />
                 </div>
               </div>
@@ -74,7 +74,7 @@ export default function SignInForm() {
             <div className="mt-8 flex flex-col gap-4">
               <div className="flex gap-4">
                 <button
-                  onClick={() => handleLogin(inputUserName, inputPassword)}
+                  onClick={() => handleLogin(InputFieldUserName, InputFieldPassword)}
                   className="flex sm:flex-none rounded-lg bg-black px-6 py-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 transition-all duration-200 justify-center"
                 >
                   Sign In
@@ -90,6 +90,5 @@ export default function SignInForm() {
           </div>
         </div>
       </div>
-    </div>
   );
 }

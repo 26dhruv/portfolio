@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { editDescription, editFirstName, editLastName, editLink, editProfileImage } from "../../store/slices/slicer";
 import { FaUser, FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaCamera } from "react-icons/fa";
 import { MdDescription, MdLink } from "react-icons/md";
-import InputField from "./inputField";
+import InputField from "../common/inputField";
 import { useNavigate } from "react-router-dom";
 
 const EditForm = () => {

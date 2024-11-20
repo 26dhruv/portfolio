@@ -13,7 +13,7 @@ app.use(cors());
 
 // In-memory "database" for users
 const users = [
-  { username: 'admin', password: '123' }
+  { username: 'admin', password: '123',role:'admin' }
 ];
 
 // POST route to register a new user
@@ -27,7 +27,7 @@ app.post('/register', (req, res) => {
   }
 
   // Store the new user
-  users.push({ username, password });
+  users.push({ username, password ,role:"client"});
 
   // Return success response
   return res.json({ success: true, message: 'User registered successfully' });
@@ -41,11 +41,14 @@ app.post('/login', (req, res) => {
   const user = users.find(user => user.username === username);
 
   if (!user || user.password !== password) {
-    return res.json({ success: false, message: 'Invalid credentials' });
+    return res.status(401).json({ success: false, message: 'Invalid credentials' });
   }
 
   // Return success if credentials match
-  return res.json({ success: true });
+  if(username=='admin')
+  {return res.json({ success: true ,role:'admin',token:'abde234'});}
+  else
+  {return res.json({ success: true ,role:'client',token:'wxyz123'});}
 });
 
 // Start the server on port 3000

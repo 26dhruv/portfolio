@@ -15,7 +15,6 @@ export default function SideBar() {
     { logo: IoMdContact, name: "Contact", path: "/contact" },
   ];
   const profileImage=useSelector((state)=>state.userProfile.profilePicture)
-  console.log(profileImage)
   return (
     <div className="fixed top-0 left-0 h-screen w-72 bg-white shadow-md flex flex-col gap-4 p-4">
       {/* Header Section with Profile Image */}

@@ -5,9 +5,15 @@ import { Description } from "../components/home/Description";
 import { Profile } from "../components/home/Profile";
 import SocialButtons from "../components/home/SocialButtons";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const userProfile = useSelector((state)=>state.userProfile)
+  const navigate=useNavigate()
   useEffect(()=>{
+    if(!userProfile.isAuthenticated)
+    {
+      navigate('/log-in')
+    }
     document.title="Home";
   },[])
   return (
