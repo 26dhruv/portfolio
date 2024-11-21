@@ -1,7 +1,9 @@
 # React + Vite
 
-# Start the server first in server folder in src using 
-node sever.cjs
+# First run the server in src folder using:
 
-# then run the react part using 
+node server.cjs
+
+# Run react using :
+
 npm run dev
