@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axiosInstance from '../../api/interceptor';
 
 const initialState = {
   firstName: 'Dhruv',
@@ -18,11 +18,12 @@ const initialState = {
   role: null,
   user: [{ username: 'admin', password: '123' }],
 };
+
 export const loginUser = createAsyncThunk(
   'userProfile/loginUser',
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3000/login', {
+      const response = await axiosInstance.post('login', {
         username,
         password,
       });
@@ -32,11 +33,12 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
 export const registerUser = createAsyncThunk(
   'userProfile/registerUser',
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3000/register', {
+      const response = await axiosInstance.post('register', {
         username,
         password,
       });
@@ -46,6 +48,7 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
 const userProfileSlice = createSlice({
   name: 'userProfile',
   initialState,
@@ -80,25 +83,26 @@ const userProfileSlice = createSlice({
         state.token = action.payload.token;
         state.error = null;
         state.role = action.payload.role;
-        alert('login successful');
+        alert('Login successful');
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isAuthenticated = false;
         state.token = null;
-        state.error = !action.payload.message || 'Login Failed';
+        state.error = action.payload?.message || 'Login failed';
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user.push({
           username: action.payload.username,
           password: action.payload.password,
         });
-        window.alert('Registeration successful');
+        window.alert('Registration successful');
       })
       .addCase(registerUser.rejected, () => {
-        alert('Registeration Unsuccessful');
+        alert('Registration Unsuccessful');
       });
   },
 });
+
 export const {
   editFirstName,
   editLastName,
