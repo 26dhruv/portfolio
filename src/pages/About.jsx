@@ -1,18 +1,15 @@
-import SideBar from "../components/common/SideBar";
-import AboutHeader from "../components/about/AboutHeader";
-import AboutContent from "../components/about/AboutContent";
-import DecorativeCircles from "../components/about/DecorativeCircles";
-import { useEffect } from "react";
+import SideBar from '../components/common/SideBar';
+import AboutHeader from '../components/about/AboutHeader';
+import AboutContent from '../components/about/AboutContent';
+import DecorativeCircles from '../components/about/DecorativeCircles';
+import { useEffect } from 'react';
 
 const AboutPage = () => {
-  
-  useEffect(()=>{
-    
-    document.title="About";
-  },[])
+  useEffect(() => {
+    document.title = 'About';
+  }, []);
   return (
     <div className="flex h-screen ">
-      {/* Sidebar */}
       <SideBar />
 
       {/* Main Content */}

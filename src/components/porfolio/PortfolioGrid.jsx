@@ -3,7 +3,6 @@ import { projects } from './ProjectData';
 import { ProjectFilter } from './ProjectFilter';
 import { ProjectCard } from './ProjectCard';
 
-
 export function PortfolioGrid() {
   const [activeFilter, setActiveFilter] = useState('web');
 
@@ -14,7 +13,7 @@ export function PortfolioGrid() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <ProjectFilter 
+      <ProjectFilter
         activeFilter={activeFilter}
         onFilterChange={setActiveFilter}
         webProjectCount={webProjects.length}
@@ -22,7 +21,7 @@ export function PortfolioGrid() {
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((project, index) => (
-          <ProjectCard 
+          <ProjectCard
             key={index}
             title={project.title}
             description={project.description}
@@ -36,4 +35,3 @@ export function PortfolioGrid() {
     </div>
   );
 }
-
