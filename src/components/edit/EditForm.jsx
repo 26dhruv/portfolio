@@ -1,16 +1,29 @@
-import { useState, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { editDescription, editFirstName, editLastName, editLink, editProfileImage } from "../../store/slices/slicer";
-import { FaUser, FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaCamera } from "react-icons/fa";
-import { MdDescription, MdLink } from "react-icons/md";
-import InputField from "../common/inputField";
-import { useNavigate } from "react-router-dom";
+import { useState, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  editDescription,
+  editFirstName,
+  editLastName,
+  editLink,
+  editProfileImage,
+} from '../../store/slices/slicer';
+import {
+  FaUser,
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaTwitter,
+  FaCamera,
+} from 'react-icons/fa';
+import { MdDescription, MdLink } from 'react-icons/md';
+import InputField from '../common/inputField';
+import { useNavigate } from 'react-router-dom';
 
 const EditForm = () => {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.userProfile);
   const fileInputRef = useRef(null);
-  
+
   const [formData, setFormData] = useState({
     firstName: profile.firstName,
     lastName: profile.lastName,
@@ -24,17 +37,17 @@ const EditForm = () => {
 
   const [imagePreview, setImagePreview] = useState(profile.profilePicture);
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = e => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -42,14 +55,14 @@ const EditForm = () => {
         setImagePreview(reader.result);
         setFormData(prev => ({
           ...prev,
-          profilePicture: reader.result
+          profilePicture: reader.result,
         }));
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     dispatch(editFirstName(formData.firstName));
     dispatch(editLastName(formData.lastName));
     dispatch(editDescription(formData.description));
@@ -58,8 +71,7 @@ const EditForm = () => {
     dispatch(editLink({ platform: 'linkedin', url: formData.linkedin }));
     dispatch(editLink({ platform: 'instagram', url: formData.instagram }));
     dispatch(editLink({ platform: 'twitter', url: formData.twitter }));
-    navigate('/home')
-
+    navigate('/home');
   };
 
   const SectionHeader = ({ icon: Icon, title }) => (
@@ -76,9 +88,7 @@ const EditForm = () => {
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-8">
           <h2 className="text-3xl font-bold text-white">Edit Profile</h2>
-          <p className="mt-2 text-blue-100">    
-            /n
-          </p>
+          <p className="mt-2 text-blue-100">/n</p>
         </div>
 
         <form onSubmit={handleSubmit} className="p-8 space-y-8">
@@ -90,7 +100,7 @@ const EditForm = () => {
                 alt="Profile"
                 className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover"
               />
-              <div 
+              <div
                 className="absolute inset-0 flex items-center justify-center rounded-full bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                 onClick={() => fileInputRef.current?.click()}
               >
@@ -111,9 +121,9 @@ const EditForm = () => {
             <SectionHeader icon={FaUser} title="Personal Information" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { icon: FaUser, name: "firstName", label: "First Name" },
-                { icon: FaUser, name: "lastName", label: "Last Name" }
-              ].map((field) => (
+                { icon: FaUser, name: 'firstName', label: 'First Name' },
+                { icon: FaUser, name: 'lastName', label: 'Last Name' },
+              ].map(field => (
                 <div key={field.name} className="relative">
                   <div className="flex items-center space-x-2 mb-2">
                     <field.icon className="w-5 h-5 text-blue-600 md:hidden" />
@@ -141,7 +151,9 @@ const EditForm = () => {
           <section className="space-y-6">
             <SectionHeader icon={MdDescription} title="Bio" />
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">About You</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                About You
+              </label>
               <textarea
                 name="description"
                 value={formData.description}
@@ -158,11 +170,11 @@ const EditForm = () => {
             <SectionHeader icon={MdLink} title="Social Links" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { icon: FaGithub, name: "github", label: "GitHub" },
-                { icon: FaLinkedin, name: "linkedin", label: "LinkedIn" },
-                { icon: FaInstagram, name: "instagram", label: "Instagram" },
-                { icon: FaTwitter, name: "twitter", label: "Twitter" }
-              ].map((social) => (
+                { icon: FaGithub, name: 'github', label: 'GitHub' },
+                { icon: FaLinkedin, name: 'linkedin', label: 'LinkedIn' },
+                { icon: FaInstagram, name: 'instagram', label: 'Instagram' },
+                { icon: FaTwitter, name: 'twitter', label: 'Twitter' },
+              ].map(social => (
                 <div key={social.name} className="relative">
                   <div className="flex items-center space-x-2 mb-2">
                     <social.icon className="w-5 h-5 text-blue-600 md:hidden" />
@@ -188,8 +200,8 @@ const EditForm = () => {
 
           {/* Submit Button */}
           <div className="pt-6">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="w-full bg-blue-600 text-white p-4 rounded-lg hover:bg-blue-700 transition-all duration-200 font-semibold text-sm shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             >
               Save Changes

@@ -1,4 +1,3 @@
-
 const DecorativeCircles = () => {
   return (
     <>

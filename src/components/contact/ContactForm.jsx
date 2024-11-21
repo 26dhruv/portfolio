@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -11,15 +11,15 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionSuccess, setSubmissionSuccess] = useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormData(prevData => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -39,7 +39,9 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-gray-700 font-medium">Your Name</label>
+        <label htmlFor="name" className="block text-gray-700 font-medium">
+          Your Name
+        </label>
         <input
           type="text"
           id="name"
@@ -52,7 +54,9 @@ const ContactForm = () => {
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-gray-700 font-medium">Email Address</label>
+        <label htmlFor="email" className="block text-gray-700 font-medium">
+          Email Address
+        </label>
         <input
           type="email"
           id="email"
@@ -65,7 +69,9 @@ const ContactForm = () => {
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-gray-700 font-medium">Subject</label>
+        <label htmlFor="subject" className="block text-gray-700 font-medium">
+          Subject
+        </label>
         <input
           type="text"
           id="subject"
@@ -78,7 +84,9 @@ const ContactForm = () => {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-gray-700 font-medium">Message</label>
+        <label htmlFor="message" className="block text-gray-700 font-medium">
+          Message
+        </label>
         <textarea
           id="message"
           name="message"
@@ -99,8 +107,12 @@ const ContactForm = () => {
       </button>
 
       {submissionSuccess !== null && (
-        <div className={`mt-4 text-center ${submissionSuccess ? 'text-green-600' : 'text-red-600'}`}>
-          {submissionSuccess ? 'Your message has been sent successfully!' : 'Something went wrong. Please try again.'}
+        <div
+          className={`mt-4 text-center ${submissionSuccess ? 'text-green-600' : 'text-red-600'}`}
+        >
+          {submissionSuccess
+            ? 'Your message has been sent successfully!'
+            : 'Something went wrong. Please try again.'}
         </div>
       )}
     </form>
